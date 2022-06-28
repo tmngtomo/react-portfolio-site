@@ -1,5 +1,9 @@
+import axios from "axios";
+import { useEffect } from "react";
 export const Skills = () =>
 {
+  useEffect(()=> {axios.get('https://api.github.com/users/tmngtomo/repos').then((response)=> console.log(response))},[]);
+
   return(
     <div id="skills">
       <div className="container">

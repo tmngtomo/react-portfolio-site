@@ -1,5 +1,5 @@
 import CoverImage from '../images/cover-image.jpg';
-import ProfileImage from '../images/profile-image.png';
+import ProfileImage from '../images/IMG_2725-4.png';
 import { FaTwitter, FaGithub } from 'react-icons/fa';
 
 export const Header = () =>{
