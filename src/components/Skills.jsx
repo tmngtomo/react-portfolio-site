@@ -1,8 +1,29 @@
 import axios from "axios";
-import { useEffect } from "react";
+import { useEffect,useState } from "react";
 export const Skills = () =>
 {
-  useEffect(()=> {axios.get('https://api.github.com/users/tmngtomo/repos').then((response)=> console.log(response))},[]);
+  const [languageList, setLanguageList] = useState([]);
+  console.log(languageList);
+  useEffect(() => {
+    axios.get('https://api.github.com/users/tmngtomo/repos')
+      .then((response) => {
+        const languageList = response.data.map(res => res.language);
+        const countedLanguageList = generateLanguageCountObj(languageList);
+        setLanguageList(countedLanguageList);
+      });
+  }, []);
+
+  const generateLanguageCountObj = (allLanguageList) => {
+    const notNullLanguageList = allLanguageList.filter(language => language != null);
+    const uniqueLanguageList = [...new Set(notNullLanguageList)];
+
+    return uniqueLanguageList.map(item => {
+      return {
+        language: item,
+        count: allLanguageList.filter(language => language === item).length
+      }
+    });
+  };
 
   return(
     <div id="skills">
