@@ -18,6 +18,10 @@ export const skillReducer = (
 ) => {
   switch(action.type) {
     case actionTypes.initial: {
+      return{
+        languageList:[],
+        requestState: requestStates.initial
+      }
     }
     case actionTypes.fetch: {
     }
