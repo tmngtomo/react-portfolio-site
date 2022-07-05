@@ -24,6 +24,10 @@ export const skillReducer = (
       }
     }
     case actionTypes.fetch: {
+      return{
+        ...state,
+        requestState:requestStates.loading
+      }
     }
     case actionTypes.success: {
     }
