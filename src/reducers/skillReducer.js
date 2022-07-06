@@ -30,6 +30,10 @@ export const skillReducer = (
       }
     }
     case actionTypes.success: {
+      return{
+        languageList:action.payload.languageList,
+        requestState:requestStates.success
+      }
     }
     case actionTypes.error: {
     }
