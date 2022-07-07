@@ -36,6 +36,10 @@ export const skillReducer = (
       }
     }
     case actionTypes.error: {
+      return{
+        languageList:[],
+        requestState:requestStates.error
+      }
     }
     default: {
       throw new Error();
