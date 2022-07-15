@@ -11,8 +11,8 @@ export const Header = () =>{
           <div className="display-table-contents">
             {/* カバー画像 */}
             <div className="profile-thumb" style={{backgroundImage: `url(${ProfileImage})`}}></div>
-            <h1 className="title-text">Hashimoto　Tomomi</h1>
-            <h3 className="title-text">Web Developer</h3>
+            <h1 className="title-text">HashimotoTomomi</h1>
+            <h3 className="title-text">Front End Developer</h3>
             <ul className="social-icons">
               <li className="icon-link">
               <a href="https://twitter.com/">
