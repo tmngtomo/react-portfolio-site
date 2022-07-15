@@ -1,14 +1,16 @@
-import { Circle } from "react-circle";
+
 import axios from "axios";
+import { Circle } from "react-circle";
 import { useEffect,useReducer } from "react";
 import { skillReducer, initialState, actionTypes } from '../reducers/skillReducer';
 import { requestStates } from "../constants";
 export const Skills = () =>
 {
   const [state, dispatch] = useReducer(skillReducer, initialState);
+
   useEffect(() => {
     dispatch({ type: actionTypes.fetch });
-    axios.get('https://api.github.com/users/USER_NAME/repos')
+    axios.get('https://api.github.com/users/tmngtomo/repos')
       .then((response) => {
         const languageList = response.data.map(res => res.language);
         const countedLanguageList = generateLanguageCountObj(languageList);
@@ -33,9 +35,12 @@ export const Skills = () =>
 
   const converseCountToPercentage = (count) => {
     if (count > 10){return 100;}
-    return count *10;
+    return count * 10;
   }
 
+  const sortedLanguageList = () => (
+    state.languageList.sort((firstLang,nextLang) => nextLang.count - firstLang.count)
+  )
   return(
     <div id="skills">
       <div className="container">
@@ -50,8 +55,8 @@ export const Skills = () =>
           }
           {
             state.requestState === requestStates.success && (
-              state.languageList.map((item,index)=>(
-                <div key = {index} >
+              sortedLanguageList().map((item,index)=>(
+                <div className="skill-item" key={index} >
                   <p className="description"><strong>{item.language}</strong></p>
                   <Circle
                     animate
